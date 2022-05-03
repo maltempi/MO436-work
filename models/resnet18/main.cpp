@@ -237,7 +237,7 @@ void ShowTops(const char *file_name, milliseconds duration) {
         printf("%d ", real_idx[i]);
     }
     
-    printf("%li \n", duration);
+    printf("%llims \n", duration.count());
 }
 
 int main(int argc, char **argv) {
