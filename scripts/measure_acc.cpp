@@ -95,6 +95,7 @@ int main(int argc, char *argv[])
 
   std::ifstream infile;
   std::string file_name[1001];
+  std::string durations[1001];
   int tops[5][1001];
   int ground_truth[1001];
 
@@ -114,6 +115,7 @@ int main(int argc, char *argv[])
     infile >> tops[2][num];
     infile >> tops[3][num];
     infile >> tops[4][num];
+    infile >> durations[num];
     ++num;
   }
   infile.close();
