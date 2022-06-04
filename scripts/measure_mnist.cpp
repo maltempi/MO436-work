@@ -95,8 +95,9 @@ int main(int argc, char *argv[])
 
   std::ifstream infile;
   std::string file_name[30];
-  std::string confidence[30];
+  std::string durations[30];
   float precision[30];
+  std::string confidence[30];
 
   int tops[5][30];
   int ground_truth[30];
@@ -117,6 +118,7 @@ int main(int argc, char *argv[])
     infile >> tops[2][num];
     infile >> tops[3][num];
     infile >> tops[4][num];
+    infile >> durations[num]
     infile >> confidence[num];
     infile >> precision[num];
     ++num;

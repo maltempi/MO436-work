@@ -25,6 +25,9 @@
 
 #include "mnist.h"
 
+#include <chrono>
+using namespace std::chrono;
+
 /// This is an example demonstrating how to use auto-generated bundles and
 /// create standalone executables that can perform neural network computations.
 /// This example loads and runs the compiled mnist network model.
@@ -187,7 +190,7 @@ void swap_elements(int idx, int pos, float val) {
 
 /// Dump the result of the inference by looking at the results vector and
 /// finding the top5 & the confidence of top1.
-void ShowTops(const char *file_name) {
+void ShowTops(const char *file_name, milliseconds duration) {
     float *results = (float *)(outputAddr);
     float maxValue = 0;
     float val = 0.f;
@@ -218,6 +221,9 @@ void ShowTops(const char *file_name) {
     for (int i = 0; i < 5; i++) {
         printf("%d ", index_5[i]);
     }
+
+    printf("%lims ", duration.count());
+
     printf(" Confidence: %f\n", maxValue);
 }
 
@@ -252,11 +258,14 @@ int main(int argc, char **argv) {
         // Copy image data into the data input variable in the mutableWeightVars area.
         memcpy(inputAddr, inputT, inputSizeInBytes);
         // Perform the computation.
+        auto start = high_resolution_clock::now();
         int errCode = mnist(constantWeight, mutableWeight, activations);
+        auto stop = high_resolution_clock::now();
         if (errCode != GLOW_SUCCESS) {
             printf("Error running bundle: error code %d\n", errCode);
         }
+        milliseconds duration = duration_cast<milliseconds>(stop - start);
         // Print results.
-        ShowTops(inputImageFilenames[n].c_str());
+        ShowTops(inputImageFilenames[n].c_str(), duration);
     }
 }
