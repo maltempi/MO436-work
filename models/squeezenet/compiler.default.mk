@@ -5,6 +5,8 @@ MODELINPUT ?= "Placeholder",float,[1,3,224,224]
 BAPI ?= static
 BUNDLE ?= bin
 MEMOPT ?= false
+MO436 ?= false
+NAIVE_CONV ?= false
 
 all: clean build
 
@@ -21,6 +23,8 @@ ${BUNDLE}/$(MODEL).o : $(MODEL).onnx
 		-dump-graph-DAG=$(MODEL)-after.dot \
 		-backend=CPU \
 		-reuse-activation-memory-allocations=$(MEMOPT) \
+		-MO436-features=$(MO436) \
+		-naive-conv=$(NAIVE_CONV) \
 		-dump-ir > $(MODEL).lir
 
 clean:

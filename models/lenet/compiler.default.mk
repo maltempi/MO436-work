@@ -4,6 +4,8 @@ MODEL ?= lenet
 MODELINPUT ?= "conv2d_input",float,[1,1,28,28]
 BUNDLE ?= bin
 MEMOPT ?= false
+MO436 ?= false
+NAIVE_CONV ?= false
 
 all: clean build
 
@@ -20,6 +22,8 @@ ${BUNDLE}/$(MODEL).o : $(MODEL).onnx
 		-dump-graph-DAG=$(MODEL)-after.dot \
 		-reuse-activation-memory-allocations=$(MEMOPT) \
         -backend=CPU \
+		-MO436-features=$(MO436) \
+		-naive-conv=$(NAIVE_CONV) \
 		-dump-ir > $(MODEL).lir
 
 clean:

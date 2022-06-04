@@ -10,7 +10,7 @@ CXXFLAGS = --static -lstdc++ -O2 -Wall
 DFINE = #-DPOLLING
 IDIR = -I${OPENCV_PATH}/include
 LDIR = -L${OPENCV_PATH}/lib
-LIBS := -lopencv_contrib -lopencv_stitching -lopencv_nonfree -lopencv_superres -lopencv_ocl -lopencv_ts -lopencv_videostab -lopencv_gpu -lopencv_photo -lopencv_objdetect -lopencv_legacy -lopencv_video -lopencv_ml -lopencv_calib3d -lopencv_features2d -lopencv_highgui -lIlmImf -llibjasper -llibtiff -llibpng -llibjpeg -lopencv_imgproc -lopencv_flann -lopencv_core -lzlib -lrt -lpthread -lm -ldl -lstdc++
+LIBS := -lopencv_contrib -lopencv_stitching -lopencv_nonfree -lopencv_superres -lopencv_ocl -lopencv_ts -lopencv_videostab -lopencv_gpu -lopencv_photo -lopencv_objdetect -lopencv_legacy -lopencv_video -lopencv_ml -lopencv_calib3d -lopencv_features2d -lopencv_highgui -lIlmImf -llibjasper -llibtiff -llibpng -llibjpeg -lopencv_imgproc -lopencv_flann -lopencv_core -lzlib -lrt -lpthread -lm -ldl -lstdc++ -lopenblas
 
 BUILD_DIR := ./bin
 BUNDLE_DIR := ./bundle

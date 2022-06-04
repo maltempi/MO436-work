@@ -9,6 +9,8 @@ MEMOPT ?= false
 CONVPAD ?= false
 RECBIAS ?= true
 DACTV ?= false
+MO436 ?= true
+NAIVE_CONV ?= false
 
 all: clean build
 
@@ -30,6 +32,8 @@ ${BUNDLE}/$(MODEL).o : $(PROFILE)
 		-rescale-bias=$(RECBIAS) \
 		-disable-fusing-actv=$(DACTV) \
 		-backend=NMP \
+		-MO436-features=$(MO436) \
+		-naive-conv=$(NAIVE_CONV) \
 		-dump-llvm-ir > $(MODEL).ll
 
 clean:
