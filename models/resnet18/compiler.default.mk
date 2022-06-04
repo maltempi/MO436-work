@@ -18,7 +18,6 @@ ${BUNDLE}/$(MODEL).o : $(MODEL).onnx
 		-model=$(MODEL).onnx \
 		-model-input=$(MODELINPUT) \
 		-bundle-api=$(BAPI) \
-		-MO436-features=false \
 		-emit-bundle=$(BUNDLE) \
 		-dump-graph-DAG-before-compile=$(MODEL)-before.dot \
 		-dump-graph-DAG=$(MODEL)-after.dot \
