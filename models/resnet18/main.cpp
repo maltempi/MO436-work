@@ -203,7 +203,7 @@ void swap_elements(int idx, int pos, float val) {
 
 /// Dump the result of the inference by looking at the results vector and
 /// finding the top5 & the confidence of top1.
-void ShowTops(const char *file_name, milliseconds duration) {
+void ShowTops(const char *file_name, microseconds duration) {
     float *results = (float *)(outputAddr);
     float val = 0.f;
 
@@ -237,7 +237,7 @@ void ShowTops(const char *file_name, milliseconds duration) {
         printf("%d ", real_idx[i]);
     }
     
-    printf("%lims \n", duration.count());
+    printf("%lius \n", duration.count());
 }
 
 int main(int argc, char **argv) {
@@ -292,7 +292,7 @@ int main(int argc, char **argv) {
             printf("Error running bundle: error code %d\n", errCode);
         }
 
-        milliseconds duration = duration_cast<milliseconds>(stop - start);
+        microseconds duration = duration_cast<microseconds>(stop - start);
 
         // Print results.
         ShowTops(inputImageFilenames[n].c_str(), duration);

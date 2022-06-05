@@ -118,7 +118,7 @@ int main(int argc, char *argv[])
     infile >> tops[2][num];
     infile >> tops[3][num];
     infile >> tops[4][num];
-    infile >> durations[num]
+    infile >> durations[num];
     infile >> confidence[num];
     infile >> precision[num];
     ++num;
